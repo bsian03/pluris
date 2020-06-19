@@ -31,6 +31,8 @@ class MessageCollector extends EventEmitter {
     this.filter = opt.filter;
     this.collected = new Collection(Message);
     this.running = false;
+    console.log('Constructor');
+    console.log(this.running);
   }
 
   /**
