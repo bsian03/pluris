@@ -59,6 +59,9 @@ class MessageCollector extends EventEmitter {
     this.emit('delete', msg);
   }
 
+  /**
+   * @returns {Promise<MessageCollector>}
+   */
   run() {
     return new Promise((res) => {
       this.running = true;
@@ -118,6 +121,7 @@ module.exports = MessageCollector;
  */
 module.exports.init = (Eris) => {
   Eris.MessageCollector = MessageCollector;
+
   if (Eris.TextChannel.prototype.awaitMessages) console.warn('awaitMessage prototype already exists in TextChannel! The prototype has not been loaded. Please uninstall/disable any other modules which creates this override.');
   else {
     /**
@@ -125,6 +129,13 @@ module.exports.init = (Eris) => {
      * @param {MessageCollectorOptions} options
      */
     Eris.TextChannel.prototype.awaitMessages = function awaitMessages(options) {
+      return new Promise((res) => res(new MessageCollector(this, options).run()));
+    };
+  }
+
+  if (Eris.PrivateChannel.prototype.awaitMessages) console.warn('awaitMessage prototype already exists in NewsChannel! The prototype has not been loaded. Please uninstall/disable any other modules which creates this override.');
+  else {
+    Eris.PrivateChannel.prototype.awaitMessages = function awaitMessages(options) {
       return new Promise((res) => res(new MessageCollector(this, options).run()));
     };
   }
