@@ -1,0 +1,32 @@
+{
+  "name": "pluris",
+  "version": "0.1.0",
+  "description": "Extra prototypes and utilities for the Eris Discord API Library",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bsian03/pluris.git"
+  },
+  "keywords": [
+    "eris",
+    "discord",
+    "discordapi"
+  ],
+  "author": "Bsian",
+  "license": "SEE LICENSE IN LICENSE",
+  "bugs": {
+    "url": "https://github.com/bsian03/pluris/issues"
+  },
+  "homepage": "https://github.com/bsian03/pluris#readme",
+  "dependencies": {
+    "eris": "^0.13.3"
+  },
+  "devDependencies": {
+    "eslint": "^7.2.0",
+    "eslint-config-airbnb-base": "^14.2.0",
+    "eslint-plugin-import": "^2.21.2"
+  }
+}
