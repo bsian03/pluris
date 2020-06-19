@@ -20,9 +20,9 @@ const MessageCollectorDefaults = {
 class MessageCollector extends EventEmitter {
   /**
    * @param {import('eris').TextableChannel} channel Channel to collect messages in
-   * @param {MessageCollectorOptions} options Options for the message collector
+   * @param {MessageCollectorOptions} [options] Options for the message collector
    */
-  constructor(channel, options) {
+  constructor(channel, options = {}) {
     super();
     const opt = Object.assign(MessageCollectorDefaults, options);
     this.channel = channel;
