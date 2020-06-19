@@ -63,8 +63,8 @@ class MessageCollector extends EventEmitter {
    * @returns {Promise<MessageCollector>}
    */
   run() {
+    this.running = true;
     return new Promise((res) => {
-      this.running = true;
       this.channel.client.on('messageCreate', this._onMessageCreate);
       this.channel.client.on('messageUpdate', this._onMessageUpdate);
       this.channel.client.on('messageDelete', this._onMessageDelete);
