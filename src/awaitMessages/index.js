@@ -38,7 +38,9 @@ class MessageCollector extends EventEmitter {
    */
   _onMessageCreate(msg) {
     if (!this.running) return;
+    console.log('Create running');
     if (!this.filter(msg)) return;
+    console.log('Create filter');
     this.emit('collect', msg);
   }
 
@@ -48,8 +50,11 @@ class MessageCollector extends EventEmitter {
    */
   _onMessageUpdate(msg, oldMsg) {
     if (!this.running) return;
+    console.log('Update Running');
     if (!this.filter(msg)) return this.collected.remove(msg);
+    console.log('Update filter');
     if (!this.collected.has(oldMsg.id)) return this.emit('collect', msg);
+    console.log('Update exists');
     this.emit('update', msg);
   }
 
@@ -95,6 +100,7 @@ class MessageCollector extends EventEmitter {
    * @param {Message} msg
    */
   onCollect(msg) {
+    console.log(msg);
     this.collected.add(msg);
     if (this.count && this.collected.size === this.count) this.stop();
   }
@@ -103,6 +109,7 @@ class MessageCollector extends EventEmitter {
    * @param {Message} msg
    */
   onUpdate(msg) {
+    console.log(msg);
     this.collected.update(msg);
   }
 
@@ -110,6 +117,7 @@ class MessageCollector extends EventEmitter {
    * @param {Message} msg
    */
   onDelete(msg) {
+    console.log(msg);
     this.collected.remove(msg);
   }
 }
