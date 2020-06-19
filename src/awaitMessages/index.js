@@ -14,7 +14,7 @@ const { Collection, Message } = require('eris');
 const MessageCollectorDefaults = {
   timeout: 10000,
   count: 10,
-  filter: (msg) => !msg.author.bot,
+  filter: (_msg) => true, // eslint-disable-line
 };
 
 class MessageCollector extends EventEmitter {
@@ -37,6 +37,7 @@ class MessageCollector extends EventEmitter {
    * @param {Message} msg
    */
   _onMessageCreate(msg) {
+    console.log(this.running);
     if (!this.running) return;
     console.log('Create running');
     if (!this.filter(msg)) return;
@@ -49,6 +50,7 @@ class MessageCollector extends EventEmitter {
    * @param {import('eris').OldMessage} oldMsg
    */
   _onMessageUpdate(msg, oldMsg) {
+    console.log(this.running);
     if (!this.running) return;
     console.log('Update Running');
     if (!this.filter(msg)) return this.collected.remove(msg);
@@ -59,6 +61,7 @@ class MessageCollector extends EventEmitter {
   }
 
   _onMessageDelete(msg) {
+    console.log(this.running);
     if (!this.running) return;
     if (!this.collected.has(msg.id)) return;
     this.emit('delete', msg);
