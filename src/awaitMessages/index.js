@@ -65,9 +65,9 @@ class MessageCollector extends EventEmitter {
   run() {
     return new Promise((res) => {
       this.running = true;
-      this.channel._client.on('messageCreate', this._onMessageCreate);
-      this.channel._client.on('messageUpdate', this._onMessageUpdate);
-      this.channel._client.on('messageDelete', this._onMessageDelete);
+      this.channel.client.on('messageCreate', this._onMessageCreate);
+      this.channel.client.on('messageUpdate', this._onMessageUpdate);
+      this.channel.client.on('messageDelete', this._onMessageDelete);
 
       this.on('collect', this.onCollect);
       this.on('update', this.onUpdate);
@@ -80,9 +80,9 @@ class MessageCollector extends EventEmitter {
 
   stop() {
     this.running = false;
-    this.channel._client.off('messageCreate', this._onMessageCreate);
-    this.channel._client.off('messageUpdate', this._onMessageUpdate);
-    this.channel._client.off('messageDelete', this._onMessageDelete);
+    this.channel.client.off('messageCreate', this._onMessageCreate);
+    this.channel.client.off('messageUpdate', this._onMessageUpdate);
+    this.channel.client.off('messageDelete', this._onMessageDelete);
 
     this.off('collect', this.onCollect);
     this.off('update', this.onUpdate);
