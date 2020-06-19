@@ -33,6 +33,13 @@ class MessageCollector extends EventEmitter {
     this.running = false;
     console.log('Constructor');
     console.log(this.running);
+    this._onMessageCreate = this._onMessageCreate.bind(this);
+    this._onMessageDelete = this._onMessageDelete.bind(this);
+    this._onMessageUpdate = this._onMessageUpdate.bind(this);
+
+    this.onCollect = this.onCollect.bind(this);
+    this.onDelete = this.onDelete.bind(this);
+    this.onUpdate = this.onUpdate.bind(this);
   }
 
   /**
