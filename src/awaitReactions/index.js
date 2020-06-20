@@ -5,7 +5,7 @@ const { continuousReactionStream } = require('eris-reactions');
  * @typedef ReactionCollectorOptions
  * @prop {Number} timeout Length in milliseconds before the collector ends automatically. Set this and count to 0 for continous/permanent collection
  * @prop {Number} count Maximum number of reactions to collect. Set this and timeout to 0 for continous/permanent collection
- * @prop {(msg: import('eris').Message) => Boolean} filter A function which takes a user ID parameter which returns a boolean indicating whether the reaction is valid or not
+ * @prop {(userID: String) => Boolean} filter A function which takes a user ID parameter which returns a boolean indicating whether the reaction is valid or not
  */
 
 /**
