@@ -1,6 +1,7 @@
 /**
  * @typedef PlurisPlugins
  * @prop {Boolean} awaitMessages
+ * @prop {Boolean} awaitReactions
  */
 
 /**
@@ -8,6 +9,7 @@
  */
 const plugins = {
   awaitMessages: true,
+  awaitReactions: true,
 };
 
 /**
@@ -29,6 +31,7 @@ module.exports = (Eris, options) => {
 
     plugin.init(Eris);
     delete plugin.init;
+    console.log(`Loaded plugin: ${k}`);
     count += 1;
   });
 
