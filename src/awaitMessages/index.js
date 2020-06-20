@@ -46,6 +46,7 @@ class MessageCollector extends EventEmitter {
    */
   _onMessageCreate(msg) {
     if (!this.running) return;
+    if (this.channel.id !== msg.channel.id) return;
     if (!this.filter(msg)) return;
     this.emit('collect', msg);
   }
@@ -56,6 +57,7 @@ class MessageCollector extends EventEmitter {
    */
   _onMessageUpdate(msg, oldMsg) {
     if (!this.running) return;
+    if (this.channel.id !== msg.channel.id) return;
     if (!this.filter(msg)) return this.collected.remove(msg);
     if (!this.collected.has(oldMsg.id)) return this.emit('collect', msg);
     this.emit('update', msg);
@@ -136,21 +138,21 @@ module.exports.init = (E) => {
      * Collect a bunch of messages
      * @param {MessageCollectorOptions} options
      */
-    E.TextChannel.prototype.awaitMessages = function awaitMessages(options) {
+    E.TextChannel.prototype.awaitMessages = function awaitMessages(options = {}) {
       return new Promise((res) => res(new MessageCollector(this, options).run()));
     };
   }
 
   if (E.PrivateChannel.prototype.awaitMessages) console.warn('awaitMessage prototype already exists in NewsChannel! The prototype has not been loaded. Please uninstall/disable any other modules which creates this override.');
   else {
-    E.PrivateChannel.prototype.awaitMessages = function awaitMessages(options) {
+    E.PrivateChannel.prototype.awaitMessages = function awaitMessages(options = {}) {
       return new Promise((res) => res(new MessageCollector(this, options).run()));
     };
   }
 
   if (E.Client.prototype.awaitChannelMessages) console.warn('awaitChannelMessages prototype already exists in Client! The prototype has not been loaded. Please uninstall/disable any other modules which creates this override.');
   else {
-    E.Client.prototype.awaitChannelMessages = function awaitChannelMessages(channel, options) {
+    E.Client.prototype.awaitChannelMessages = function awaitChannelMessages(channel, options = {}) {
       return new Promise((res) => res(new MessageCollector(channel, options).run()));
     };
   }
