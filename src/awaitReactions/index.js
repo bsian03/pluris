@@ -41,7 +41,10 @@ class ReactionCollector extends EventEmitter {
     const ReactionHandler = continuousReactionStream;
     return new Promise((res) => {
       this.handler = new ReactionHandler(this.message, this.filter, !this.timeout && !this.count, { time: this.timeout, maxMatches: this.count });
-      this.handler.on('reacted', this.collected.push);
+      this.handler.on('reacted', (x) => {
+        this.emit('collect', x);
+        this.collected.push(x);
+      });
       this.handler.once('end', (collected) => {
         this.collected = collected; // Just to confirm
         res(this);
