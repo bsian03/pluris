@@ -147,4 +147,11 @@ module.exports.init = (E) => {
       return new Promise((res) => res(new MessageCollector(this, options).run()));
     };
   }
+
+  if (E.Client.prototype.awaitChannelMessages) console.warn('awaitChannelMessages prototype already exists in Client! The prototype has not been loaded. Please uninstall/disable any other modules which creates this override.');
+  else {
+    E.Client.prototype.awaitChannelMessages = function awaitChannelMessages(channel, options) {
+      return new Promise((res) => res(new MessageCollector(channel, options).run()));
+    };
+  }
 };

@@ -73,4 +73,11 @@ module.exports.init = (E) => {
       return new Promise((res) => res(new ReactionCollector(this, options).run()));
     };
   }
+
+  if (E.Client.prototype.awaitMessageReactions) console.warn('awaitMessageReactions prototype already exists in Client! The prototype has not been loaded. Please uninstall/disable any other modules which creates this override.');
+  else {
+    E.Client.prototype.awaitMessageReactions = function awaitMessageReactions(message, options) {
+      return new Promise((res) => res(new ReactionCollector(message, options).run()));
+    };
+  }
 };
