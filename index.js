@@ -16,7 +16,7 @@ const plugins = {
  * @param {import('eris')} Eris
  * @param {PlurisPlugins} options
  */
-module.exports = (Eris, options) => {
+module.exports = (Eris, options = {}) => {
   const selectedPlugins = Object.keys(options);
   selectedPlugins.forEach((k) => {
     if (typeof plugins[k] === 'undefined') return console.error(`Unknown option: ${k}`);
