@@ -1,11 +1,11 @@
 const { EventEmitter } = require('events');
-const { Collection, Message } = require('eris');
+const Eris = require('eris');
 
 /**
  * @typedef MessageCollectorOptions
  * @prop {Number} timeout Length in milliseconds before the collector ends automatically
  * @prop {Number} count Maximum number of messages to collect. Set to 0 to collect as many messages
- * @prop {(msg: Message) => Boolean} filter A function which takes a message parameter which returns a boolean indicating whether the message is valid or not
+ * @prop {(msg: Eris.Message) => Boolean} filter A function which takes a message parameter which returns a boolean indicating whether the message is valid or not
  */
 
 /**
@@ -19,7 +19,7 @@ const MessageCollectorDefaults = {
 
 class MessageCollector extends EventEmitter {
   /**
-   * @param {import('eris').TextableChannel} channel Channel to collect messages in
+   * @param {Eris.TextableChannel} channel Channel to collect messages in
    * @param {MessageCollectorOptions} [options] Options for the message collector
    */
   constructor(channel, options = {}) {
@@ -29,7 +29,7 @@ class MessageCollector extends EventEmitter {
     this.timeout = opt.timeout;
     this.count = opt.count;
     this.filter = opt.filter;
-    this.collected = new Collection(Message);
+    this.collected = new Eris.Collection(Eris.Message);
     this.running = false;
 
     this._onMessageCreate = this._onMessageCreate.bind(this);
@@ -42,7 +42,7 @@ class MessageCollector extends EventEmitter {
   }
 
   /**
-   * @param {Message} msg
+   * @param {Eris.Message} msg
    */
   _onMessageCreate(msg) {
     if (!this.running) return;
@@ -51,8 +51,8 @@ class MessageCollector extends EventEmitter {
   }
 
   /**
-   * @param {Message} msg
-   * @param {import('eris').OldMessage} oldMsg
+   * @param {Eris.Message} msg
+   * @param {Eris.OldMessage} oldMsg
    */
   _onMessageUpdate(msg, oldMsg) {
     if (!this.running) return;
@@ -100,7 +100,7 @@ class MessageCollector extends EventEmitter {
   }
 
   /**
-   * @param {Message} msg
+   * @param {Eris.Message} msg
    */
   onCollect(msg) {
     this.collected.add(msg);
@@ -108,14 +108,14 @@ class MessageCollector extends EventEmitter {
   }
 
   /**
-   * @param {Message} msg
+   * @param {Eris.Message} msg
    */
   onUpdate(msg) {
     this.collected.update(msg);
   }
 
   /**
-   * @param {Message} msg
+   * @param {Eris.Message} msg
    */
   onDelete(msg) {
     this.collected.remove(msg);
@@ -125,25 +125,25 @@ class MessageCollector extends EventEmitter {
 module.exports = MessageCollector;
 
 /**
- * @param {import('eris')} Eris
+ * @param {Eris} E
  */
-module.exports.init = (Eris) => {
-  Eris.MessageCollector = MessageCollector;
+module.exports.init = (E) => {
+  E.MessageCollector = MessageCollector;
 
-  if (Eris.TextChannel.prototype.awaitMessages) console.warn('awaitMessage prototype already exists in TextChannel! The prototype has not been loaded. Please uninstall/disable any other modules which creates this override.');
+  if (E.TextChannel.prototype.awaitMessages) console.warn('awaitMessage prototype already exists in TextChannel! The prototype has not been loaded. Please uninstall/disable any other modules which creates this override.');
   else {
     /**
      * Collect a bunch of messages
      * @param {MessageCollectorOptions} options
      */
-    Eris.TextChannel.prototype.awaitMessages = function awaitMessages(options) {
+    E.TextChannel.prototype.awaitMessages = function awaitMessages(options) {
       return new Promise((res) => res(new MessageCollector(this, options).run()));
     };
   }
 
-  if (Eris.PrivateChannel.prototype.awaitMessages) console.warn('awaitMessage prototype already exists in NewsChannel! The prototype has not been loaded. Please uninstall/disable any other modules which creates this override.');
+  if (E.PrivateChannel.prototype.awaitMessages) console.warn('awaitMessage prototype already exists in NewsChannel! The prototype has not been loaded. Please uninstall/disable any other modules which creates this override.');
   else {
-    Eris.PrivateChannel.prototype.awaitMessages = function awaitMessages(options) {
+    E.PrivateChannel.prototype.awaitMessages = function awaitMessages(options) {
       return new Promise((res) => res(new MessageCollector(this, options).run()));
     };
   }
