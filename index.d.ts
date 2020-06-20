@@ -6,7 +6,6 @@ declare global {
     interface CollectorOptions {
       timeout?: number;
       count?: number;
-      filter?: (msg: ErisMessage) => boolean;
     }
 
     interface MessageCollectorOptions extends CollectorOptions {
