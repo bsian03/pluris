@@ -22,7 +22,8 @@
   },
   "homepage": "https://github.com/bsian03/pluris#readme",
   "dependencies": {
-    "eris": "^0.13.3"
+    "eris": "^0.13.3",
+    "eris-reactions": "^0.1.2"
   },
   "devDependencies": {
     "eslint": "^7.2.0",
