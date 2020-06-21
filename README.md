@@ -38,6 +38,7 @@ Message Collector for all textable channels. Includes a MessageCollector class
 > | [options.timeout] | Number   | 10000         | Length in milliseconds before the collector ends automatically              |
 > | [options.count]   | Number   | 10            | Maximum number of messages to collect. Set to 0 to collect as many messages |
 > | [options.filter]  | Function | (msg) => true | A filter to check whether the message is valid or not                       |
+>
 > Returns `Promise<MessageCollector>` - See below for use
 
 ### client.awaitChannelMessages(channel, options);
@@ -45,6 +46,7 @@ Message Collector for all textable channels. Includes a MessageCollector class
 > |-----------|-----------------|---------|--------------------------------------------------|
 > | channel   | TextableChannel |         | Text channel the message collector should run in |
 > | [options] | Object          | {}      | See above                                        |
+>
 > Returns `Promise<MessageCollector>` - See below for use
 
 ### Class: MessageCollector
@@ -69,6 +71,7 @@ Message Collector for all textable channels. Includes a MessageCollector class
 > | Parameter | Type    | Default | Description               |
 > |-----------|---------|---------|---------------------------|
 > | msg       | Message |         | Message to check if valid |
+>
 > Returns `Boolean`
 
 - run()
@@ -112,6 +115,7 @@ Reaction collector for messages. Includes a ReactionCollector class. Thanks [Riy
 > | timeout   | Number   | 10000            | Length in milliseconds before the collector ends automatically. Set this and count to 0 for continous/permanent collection |
 > | count     | Number   | 10               | Maximum number of reactions to collect. Set this and timeout to 0 for continous/permanent collection                       |
 > | filter    | Function | (userID) => true | A function to check whether the reaction is valid or not                                                                   |
+>
 > Returns `Promise<ReactionCollector>` - See below for use
 
 ### Class: ReactionCollector
@@ -137,6 +141,7 @@ Reaction collector for messages. Includes a ReactionCollector class. Thanks [Riy
 > | Parameter | Type   | Default | Description               |
 > |-----------|--------|---------|---------------------------|
 > | userID    | String |         | User ID to check if valid |
+>
 > Returns `Boolean`
 
 - run()
