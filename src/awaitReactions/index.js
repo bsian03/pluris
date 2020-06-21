@@ -47,6 +47,7 @@ class ReactionCollector extends EventEmitter {
       });
       this.handler.once('end', (collected) => {
         this.collected = collected; // Just to confirm
+        this.emit('stop');
         res(this);
       });
     });
