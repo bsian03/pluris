@@ -22,7 +22,7 @@ class ReactionCollector extends EventEmitter {
    * @param {import('eris').Message} message
    * @param {ReactionCollectorOptions} options
    */
-  constructor(message, options) {
+  constructor(message, options = {}) {
     super();
     const opt = Object.assign(ReactionCollectorDefaults, options);
     this.message = message;
