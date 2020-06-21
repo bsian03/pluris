@@ -12,7 +12,7 @@ const { continuousReactionStream } = require('eris-reactions');
  * @type {ReactionCollectorOptions}
  */
 const ReactionCollectorDefaults = {
-  timeout: 1000,
+  timeout: 10000,
   count: 10,
   filter: (_msg) => true, // eslint-disable-line
 };
