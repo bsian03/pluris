@@ -1,5 +1,5 @@
 import { EventEmitter } from 'events';
-import { TextableChannel, Message as ErisMessage, Collection, GuildTextableChannel } from 'eris';
+import * as eris from 'eris';
 
 declare global {
   namespace Eris {
@@ -9,25 +9,25 @@ declare global {
     }
 
     interface MessageCollectorOptions extends CollectorOptions {
-      filter?: (msg: ErisMessage) => boolean;
+      filter?: (msg: eris.Message) => boolean;
     }
 
     interface ReactionCollectorOptions extends CollectorOptions {
       filter?: (userID: string) => boolean;
     }
 
-    interface CollectedReaction<T extends Textable = TextableChannel> {
-      msg: ErisMessage<T>;
+    interface CollectedReaction<T extends Textable = eris.TextableChannel> {
+      msg: eris.Message<T>;
       emoji: Emoji;
       userID: string;
     }
 
-    class MessageCollector<T extends Textable = TextableChannel> extends EventEmitter implements MessageCollectorOptions {
+    class MessageCollector<T extends Textable = eris.TextableChannel> extends EventEmitter implements MessageCollectorOptions {
       channel: T;
       timeout: number;
       count: number;
       filter: (msg: Message) => boolean;
-      collected: Collection<Message<T>>;
+      collected: eris.Collection<Message<T>>;
       running: boolean;
       constructor(channel: T, options?: MessageCollectorOptions);
       run(): Promise<MessageCollector<T>>;
@@ -36,8 +36,8 @@ declare global {
       on(listener: 'stop', event: () => void): this;
     }
 
-    class ReactionCollector<T extends Textable = TextableChannel> extends EventEmitter implements ReactionCollectorOptions {
-      message: ErisMessage<T>;
+    class ReactionCollector<T extends Textable = eris.TextableChannel> extends EventEmitter implements ReactionCollectorOptions {
+      message: eris.Message<T>;
       timeout: number;
       count: number;
       filter: (userID: string) => boolean;
@@ -48,7 +48,7 @@ declare global {
       on(listener: 'collect', event: (x: CollectedReaction) => void): this;
     }
 
-    class Message<T extends Textable = TextableChannel> {
+    class Message<T extends Textable = eris.TextableChannel> {
       awaitReactions(options: ReactionCollectorOptions): ReactionCollector<T>;
     }
 
@@ -63,12 +63,18 @@ declare global {
       awaitMessages(options: MessageCollectorOptions): Promise<MessageCollector>
     }
     interface GuildTextable {
-      awaitMessages(options: MessageCollectorOptions): Promise<MessageCollector<GuildTextableChannel>>
+      awaitMessages(options: MessageCollectorOptions): Promise<MessageCollector<eris.GuildTextableChannel>>
+    }
+
+    class Client {
+      awaitMessageReactions(message: eris.Message, options: ReactionCollectorOptions): Promise<ReactionCollector>;
+      awaitChannelMessages(channel: eris.TextableChannel, options: MessageCollectorOptions): Promise<MessageCollector>;
     }
   }
+};
 
-  class Client {
-    awaitMessageReactions(message: ErisMessage, options: ReactionCollectorOptions): Promise<ReactionCollector>;
-    awaitChannelMessages(channel: TextableChannel, options: MessageCollectorOptions): Promise<MessageCollector>;
-  }
-}
+declare type PlurisPlugins = { [plugin: string]: boolean };
+
+declare function Pluris(Eris: eris, options?: PlurisPlugins): void;
+
+export = Pluris;
