@@ -14,12 +14,14 @@ declare module 'eris' {
     filter?: (userID: string) => boolean;
   }
 
+  // @ts-ignore See my PR on the Eris repo
   interface CollectedReaction<T extends Textable = TextableChannel> {
     msg: Message<T>;
     emoji: Emoji;
     userID: string;
   }
 
+  // @ts-ignore
   class MessageCollector<T extends Textable = TextableChannel> extends EventEmitter implements MessageCollectorOptions {
     channel: T;
     timeout: number;
@@ -34,6 +36,7 @@ declare module 'eris' {
     on(listener: 'stop', event: () => void): this;
   }
 
+  // @ts-ignore
   class ReactionCollector<T extends Textable = TextableChannel> extends EventEmitter implements ReactionCollectorOptions {
     message: Message<T>;
     timeout: number;
