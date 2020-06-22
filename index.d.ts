@@ -49,6 +49,10 @@ declare module 'eris' {
   interface Textable {
     awaitMessages(options: MessageCollectorOptions): Promise<MessageCollector>
   }
+
+  interface GuildTextable {
+    awaitMessages(options: MessageCollectorOptions): Promise<MessageCollector>
+  }
 }
 
 declare type PlurisPlugins = { [plugin: string]: boolean };
