@@ -1,5 +1,6 @@
 const { EventEmitter } = require('events');
 const { continuousReactionStream } = require('eris-reactions');
+const { loadImport, loadPrototype } = require('../../misc');
 
 /**
  * @typedef ReactionCollectorOptions
@@ -65,23 +66,11 @@ module.exports = ReactionCollector;
  * @param {import('eris')} E
  */
 module.exports.init = (E) => {
-  E.ReactionCollector = ReactionCollector;
-
-  if (E.Message.prototype.awaitReactions) console.warn('awaitReactions prototype already exists in Message! The prototype has not been loaded. Please uninstall/disable any other modules which creates this override.');
-  else {
-    /**
-     * Collect a bunch of messages
-     * @param {ReactionCollectorOptions} options
-     */
-    E.Message.prototype.awaitReactions = function awaitMessages(options) {
-      return new Promise((res) => res(new ReactionCollector(this, options).run()));
-    };
-  }
-
-  if (E.Client.prototype.awaitMessageReactions) console.warn('awaitMessageReactions prototype already exists in Client! The prototype has not been loaded. Please uninstall/disable any other modules which creates this override.');
-  else {
-    E.Client.prototype.awaitMessageReactions = function awaitMessageReactions(message, options) {
-      return new Promise((res) => res(new ReactionCollector(message, options).run()));
-    };
-  }
+  loadImport(E, ReactionCollector);
+  loadPrototype(E, 'Message', function awaitReactions(options) {
+    return new ReactionCollector(this, options).run();
+  });
+  loadPrototype(E, 'Client', function awaitMessageReactions(message, options) {
+    return new ReactionCollector(message, options).run();
+  });
 };

@@ -22,6 +22,7 @@
         "no-console": "off",
         "global-require": "off",
         "import/no-dynamic-require": "off",
-        "import/no-extraneous-dependencies": "off"
+        "import/no-extraneous-dependencies": "off",
+        "prefer-arrow-callback": "off"
     }
 }

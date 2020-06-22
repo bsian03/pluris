@@ -1,5 +1,6 @@
 const { EventEmitter } = require('events');
 const Eris = require('eris');
+const { loadPrototype, loadImport } = require('../../misc');
 
 /**
  * @typedef MessageCollectorOptions
@@ -130,30 +131,14 @@ module.exports = MessageCollector;
  * @param {Eris} E
  */
 module.exports.init = (E) => {
-  E.MessageCollector = MessageCollector;
-
-  if (E.TextChannel.prototype.awaitMessages) console.warn('awaitMessage prototype already exists in TextChannel! The prototype has not been loaded. Please uninstall/disable any other modules which creates this override.');
-  else {
-    /**
-     * Collect a bunch of messages
-     * @param {MessageCollectorOptions} options
-     */
-    E.TextChannel.prototype.awaitMessages = function awaitMessages(options = {}) {
-      return new Promise((res) => res(new MessageCollector(this, options).run()));
-    };
-  }
-
-  if (E.PrivateChannel.prototype.awaitMessages) console.warn('awaitMessage prototype already exists in NewsChannel! The prototype has not been loaded. Please uninstall/disable any other modules which creates this override.');
-  else {
-    E.PrivateChannel.prototype.awaitMessages = function awaitMessages(options = {}) {
-      return new Promise((res) => res(new MessageCollector(this, options).run()));
-    };
-  }
-
-  if (E.Client.prototype.awaitChannelMessages) console.warn('awaitChannelMessages prototype already exists in Client! The prototype has not been loaded. Please uninstall/disable any other modules which creates this override.');
-  else {
-    E.Client.prototype.awaitChannelMessages = function awaitChannelMessages(channel, options = {}) {
-      return new Promise((res) => res(new MessageCollector(channel, options).run()));
-    };
-  }
+  loadImport(E, MessageCollector);
+  loadPrototype(E, 'TextChannel', function awaitMessages(options = {}) {
+    return new MessageCollector(this, options).run();
+  });
+  loadPrototype(E, 'PrivateChannel', function awaitMessages(options = {}) {
+    return new MessageCollector(this, options).run();
+  });
+  loadPrototype(E, 'Client', function awaitChannelMessages(channel, options = {}) {
+    return new MessageCollector(channel, options).run();
+  });
 };
