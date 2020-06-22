@@ -67,11 +67,11 @@ module.exports = ReactionCollector;
 module.exports.init = (E) => {
   E.ReactionCollector = ReactionCollector;
 
-  if (E.Message.prototype.awaitReactions) console.warn('awaitMessage prototype already exists in TextChannel! The prototype has not been loaded. Please uninstall/disable any other modules which creates this override.');
+  if (E.Message.prototype.awaitReactions) console.warn('awaitReactions prototype already exists in Message! The prototype has not been loaded. Please uninstall/disable any other modules which creates this override.');
   else {
     /**
      * Collect a bunch of messages
-     * @param {MessageCollectorOptions} options
+     * @param {ReactionCollectorOptions} options
      */
     E.Message.prototype.awaitReactions = function awaitMessages(options) {
       return new Promise((res) => res(new ReactionCollector(this, options).run()));
