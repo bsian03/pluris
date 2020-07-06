@@ -2,6 +2,7 @@
  * @typedef PlurisPlugins
  * @prop {Boolean} awaitMessages
  * @prop {Boolean} awaitReactions
+ * @prop {Boolean} embed
  */
 
 /**
@@ -10,6 +11,7 @@
 const plugins = {
   awaitMessages: true,
   awaitReactions: true,
+  embed: true,
 };
 
 /**

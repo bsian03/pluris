@@ -46,6 +46,20 @@ declare module 'eris' {
     on(listener: 'collect', event: (x: CollectedReaction) => void): this;
   }
 
+  class Embed implements EmbedOptions {
+    fields: EmbedField[];
+    setTitle(title: string): this;
+    setDescription(description: string): this;
+    setURL(url: string): this;
+    setTimestamp(timestamp?: DateConstructor): this;
+    setColor(color: string|number): this;
+    setFooter(text: string, iconURL?: string): this;
+    setImage(imageURL: string): this;
+    setThumbnail(thumbnailURL: string): this;
+    setAuthor(name: string, url?: string, iconURL?: string): this;
+    addField(name: string, value: string, inline?: boolean): this;
+  }
+
   interface Textable {
     awaitMessages(options: MessageCollectorOptions): Promise<MessageCollector>
   }
