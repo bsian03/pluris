@@ -1,24 +1,13 @@
-/**
- * @typedef PlurisPlugins
- * @prop {Boolean} awaitMessages
- * @prop {Boolean} awaitReactions
- * @prop {Boolean} embed
- */
+const readdir = require('util').promisify(require('fs').readdir);
 
-/**
- * @type {PlurisPlugins}
- */
-const plugins = {
-  awaitMessages: true,
-  awaitReactions: true,
-  embed: true,
-};
+let plugins;
 
 /**
  * @param {import('eris')} Eris
- * @param {PlurisPlugins} options
+ * @param {Object.<string, Boolean>} options
  */
-module.exports = (Eris, options = {}) => {
+module.exports = async (Eris, options = {}) => {
+  plugins = Object.fromEntries(await readdir('./src')).map((p) => [p, true]);
   const selectedPlugins = Object.keys(options);
   selectedPlugins.forEach((k) => {
     if (typeof plugins[k] === 'undefined') return console.error(`Unknown option: ${k}`);
