@@ -89,10 +89,15 @@ declare module 'eris' {
     awaitReactions(options: ReactionCollectorOptions): Promise<ReactionCollector<T>>;
   }
 
+  interface User {
+    createMessage(content: MessageContent | { embed?: Embed }, file?: MessageFile | MessageFile[]): Promise<Message<PrivateChannel>>;
+  }
+
   interface Client {
     awaitChannelMessages(channel: TextableChannel, options: MessageCollectorOptions): Promise<MessageCollector>;
     awaitMessageReactions(message: Message, options: ReactionCollectorOptions): Promise<ReactionCollector>;
     createMessage(channelID: string, content: MessageContent | { embed?: Embed }, file?: MessageFile | MessageFile[]): Promise<Message>;
+    createDMMessage(userID: string, content: MessageContent | { embed?: Embed }, file?: MessageFile | MessageFile[]): Promise<Message<PrivateChannel>>;
   }
 }
 

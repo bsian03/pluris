@@ -31,12 +31,12 @@ Plugins
 -------
 - [awaitMessages](docs/awaitMessages)
 - [awaitReactions](docs/awaitReactions)
+- [createDMMessage](docs/createDMMessage)
+- [embed](docs/embed)
 
 TypeScript
 ----------
-This package includes some documentation updates for Eris. Due to limitations within TypeScript, only definitions for class declarations have been included, class prototypes have not been documented in TypeScript. Once TypeScript allows for prototype additions in module augmentations, they will be included in this package.
-
-However, you will still be able to use those methods. You may add `// @ts-expect-error` or `// @ts-ignore` above the relevant line to allow tsc to transpile the file without errors.
+This package includes some documentation updates for Eris. I have tried to overwrite the typings as best as I can, however if there are any errors or issues, please let me know.
 
 License
 -------
