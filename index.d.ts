@@ -62,27 +62,27 @@ declare module 'eris' {
 
   interface Textable {
     awaitMessages(options: MessageCollectorOptions): Promise<MessageCollector>;
-    createMessage(content: MessageContent | { embed: Embed }, file?: MessageFile | MessageFile[]): Promise<Message>;
+    createMessage(content: MessageContent | { embed?: Embed }, file?: MessageFile | MessageFile[]): Promise<Message>;
   }
 
   interface GuildTextable {
     awaitMessages(options: MessageCollectorOptions): Promise<MessageCollector<GuildTextableChannel>>;
-    createMessage(content: MessageContent | { embed: Embed }, file?: MessageFile | MessageFile[]): Promise<Message<GuildTextableChannel>>;
+    createMessage(content: MessageContent | { embed?: Embed }, file?: MessageFile | MessageFile[]): Promise<Message<GuildTextableChannel>>;
   }
 
   interface TextChannel {
     awaitMessages(options: MessageCollectorOptions): Promise<MessageCollector<TextChannel>>;
-    createMessage(content: MessageContent | { embed: Embed }, file?: MessageFile | MessageFile[]): Promise<Message<TextChannel>>;
+    createMessage(content: MessageContent | { embed?: Embed }, file?: MessageFile | MessageFile[]): Promise<Message<TextChannel>>;
   }
 
   interface NewsChannel {
     awaitMessages(options: MessageCollectorOptions): Promise<MessageCollector<NewsChannel>>;
-    createMessage(content: MessageContent | { embed: Embed }, file?: MessageFile | MessageFile[]): Promise<Message<NewsChannel>>;
+    createMessage(content: MessageContent | { embed?: Embed }, file?: MessageFile | MessageFile[]): Promise<Message<NewsChannel>>;
   }
 
   interface PrivateChannel {
     awaitMessages(options: MessageCollectorOptions): Promise<MessageCollector<PrivateChannel>>;
-    createMessage(content: MessageContent | { embed: Embed }, file?: MessageFile | MessageFile[]): Promise<Message<PrivateChannel>>;
+    createMessage(content: MessageContent | { embed?: Embed }, file?: MessageFile | MessageFile[]): Promise<Message<PrivateChannel>>;
   }
 
   interface Message<T extends Textable = TextableChannel> {
@@ -92,7 +92,7 @@ declare module 'eris' {
   interface Client {
     awaitChannelMessages(channel: TextableChannel, options: MessageCollectorOptions): Promise<MessageCollector>;
     awaitMessageReactions(message: Message, options: ReactionCollectorOptions): Promise<ReactionCollector>;
-    createMessage(channelID: string, content: MessageContent | { embed: Embed }, file?: MessageFile | MessageFile[]): Promise<Message>;
+    createMessage(channelID: string, content: MessageContent | { embed?: Embed }, file?: MessageFile | MessageFile[]): Promise<Message>;
   }
 }
 

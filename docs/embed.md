@@ -5,7 +5,7 @@ Embed Constructor for sending embeds
 ## channel.createMessage(content, file);
 > | Parameter       | Type                             | Default | Description  |
 > |-----------------|----------------------------------|---------|--------------|
-> | content         | Object                           |         | Message data |
+> | [content]       | Object\|String                   |         | Message data |
 > | [content.embed] | Embed                            |         | Embed class  |
 > | [file]          | MessageFile\|Array\<MessageFile> |         | Message File |
 
@@ -13,7 +13,7 @@ Embed Constructor for sending embeds
 > | Parameter       | Type                             | Default | Description  |
 > |-----------------|----------------------------------|---------|--------------|
 > | channelID       | String                           |         | Channel ID   |
-> | content         | Object                           |         | Message data |
+> | [content]       | Object\|String                   |         | Message data |
 > | [content.embed] | Embed                            |         | Embed class  |
 > | [file]          | MessageFile\|Array\<MessageFile> |         | Message File |
 
