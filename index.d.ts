@@ -87,6 +87,7 @@ declare module 'eris' {
 
   interface Message<T extends Textable = TextableChannel> {
     awaitReactions(options: ReactionCollectorOptions): Promise<ReactionCollector<T>>;
+    guild: T extends GuildTextable ? Guild : undefined;
   }
 
   interface User {
