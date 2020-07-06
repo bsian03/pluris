@@ -5,7 +5,7 @@
         "node": true
     },
     "extends": [
-        "airbnb-base"
+        "airbnb-typescript/base"
     ],
     "globals": {
         "Atomics": "readonly",
@@ -23,6 +23,12 @@
         "global-require": "off",
         "import/no-dynamic-require": "off",
         "import/no-extraneous-dependencies": "off",
-        "prefer-arrow-callback": "off"
+        "prefer-arrow-callback": "off",
+        // TypeScript rules
+        "max-classes-per-file": "off", // TS throws a fit
+        "@typescript-eslint/dot-notation": "off",
+        "@typescript-eslint/no-implied-eval": "off",
+        "@typescript-eslint/no-throw-literal": "off",
+        "@typescript-eslint/lines-between-class-members": "off"
     }
 }
