@@ -4,7 +4,7 @@
   "description": "Extra prototypes and utilities for the Eris Discord API Library",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "eslint ./ --ext .js,.ts"
   },
   "repository": {
     "type": "git",
