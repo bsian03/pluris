@@ -2,10 +2,20 @@
 # embed
 Embed Constructor for sending embeds
 
-## channel.createMessage(options);
-> | Parameter | Type  | Default   | Description |
-> |-----------|-------|-----------|-------------|
-> | [embed]   | Embed | undefined | Embed class |
+## channel.createMessage(content, file);
+> | Parameter       | Type                             | Default | Description  |
+> |-----------------|----------------------------------|---------|--------------|
+> | content         | Object                           |         | Message data |
+> | [content.embed] | Embed                            |         | Embed class  |
+> | [file]          | MessageFile\|Array\<MessageFile> |         | Message File |
+
+## client.createMessage(channelID, content, file);
+> | Parameter       | Type                             | Default | Description  |
+> |-----------------|----------------------------------|---------|--------------|
+> | channelID       | String                           |         | Channel ID   |
+> | content         | Object                           |         | Message data |
+> | [content.embed] | Embed                            |         | Embed class  |
+> | [file]          | MessageFile\|Array\<MessageFile> |         | Message File |
 
 ## Class: Embed
 ### Constructor `new Eris.Embed(data);`
