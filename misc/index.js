@@ -6,7 +6,7 @@ module.exports = {
    * @param {Boolean} getter
    */
   loadPrototype: (Eris, Class, fn, getter = false) => {
-    if (Eris[Class].prototype[fn.name]) return console.warn(`${fn.name} prototype already exists in ${Class}! ${this.warningMessage('prototype')}`);
+    if (Eris[Class].prototype[fn.name] !== undefined) return console.warn(`${fn.name} prototype already exists in ${Class}! ${this.warningMessage('prototype')}`);
     fn = fn.bind(Eris[Class].prototype);
     Object.defineProperty(Eris[Class].prototype, fn.name, getter ? { get: fn } : { value: fn });
     console.log(`Loaded ${Class}#${fn.name}`);
@@ -17,7 +17,7 @@ module.exports = {
    * @param {new (...args) => any} Class
    */
   loadImport: (Eris, Class) => {
-    if (Eris[Class.name]) return console.warn(`Eris.${Class.name} is already defined! ${this.warningMessage('import')}`);
+    if (Eris[Class.name] !== undefined) return console.warn(`Eris.${Class.name} is already defined! ${this.warningMessage('import')}`);
     Object.defineProperty(Eris, Class.name, { value: Class });
     console.log(`Loaded import ${Class.name}`);
   },
