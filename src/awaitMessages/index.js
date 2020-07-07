@@ -76,10 +76,12 @@ class MessageCollector extends EventEmitter {
   run() {
     this.running = true;
     return new Promise((res) => {
+      this.channel.client.setMaxListeners(this.getMaxListeners() + 1);
       this.channel.client.on('messageCreate', this._onMessageCreate);
       this.channel.client.on('messageUpdate', this._onMessageUpdate);
       this.channel.client.on('messageDelete', this._onMessageDelete);
 
+      this.setMaxListeners(this.getMaxListeners() + 1);
       this.on('collect', this.onCollect);
       this.on('update', this.onUpdate);
       this.on('delete', this.onDelete);
@@ -91,10 +93,12 @@ class MessageCollector extends EventEmitter {
 
   stop() {
     this.running = false;
+    this.channel.client.setMaxListeners(this.getMaxListeners() - 1);
     this.channel.client.off('messageCreate', this._onMessageCreate);
     this.channel.client.off('messageUpdate', this._onMessageUpdate);
     this.channel.client.off('messageDelete', this._onMessageDelete);
 
+    this.setMaxListeners(this.getMaxListeners() - 1);
     this.off('collect', this.onCollect);
     this.off('update', this.onUpdate);
     this.off('delete', this.onDelete);

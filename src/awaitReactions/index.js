@@ -39,24 +39,36 @@ class ReactionCollector extends EventEmitter {
    */
   run() {
     this.running = true;
+    if (!this.running) this.setMaxListeners(this.getMaxListeners() + 1);
     const ReactionHandler = continuousReactionStream;
     return new Promise((res) => {
       this.handler = new ReactionHandler(this.message, this.filter, !this.timeout && !this.count, { time: this.timeout, maxMatches: this.count });
+      this.handler.client.setMaxListeners(this.handler.client.getMaxListeners() + 1);
+      this.handler.setMaxListeners(this.handler.getMaxListeners() + 1);
+
       this.handler.on('reacted', (x) => {
         this.emit('collect', x);
         this.collected.push(x);
       });
       this.handler.once('end', (collected) => {
         this.collected = collected; // Just to confirm
-        this.emit('stop');
+        this.stop();
         res(this);
       });
     });
   }
 
   stop() {
+    if (this.running) this.setMaxListeners(this.getMaxListeners() - 1);
     this.running = false;
-    if (this.handler) this.handler.stopListening('Called by user');
+
+    if (this.handler) {
+      this.handler.client.setMaxListeners(this.handler.client.getMaxListeners() - 1);
+      if (!this.handler.ended) this.handler.stopListening('Called by user');
+      this.handler.off('messageReactionAdd', this.handler.listener);
+      this.handler.setMaxListeners(this.handler.getMaxListeners() - 1);
+    }
+    this.emit('stop');
   }
 }
 
