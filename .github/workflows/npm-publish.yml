@@ -41,6 +41,7 @@ jobs:
           node-version: 12
           registry-url: https://npm.pkg.github.com/
       - run: npm ci
+      - run: echo registry=https://npm.pkg.github.com/@bsian03 >> .npmrc
       - run: npm i eris
       - run: npm publish
         env:
