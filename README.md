@@ -35,6 +35,8 @@ Plugins
 - [embed](docs/embed.md)
 - [messageGuild](docs/messageGuild.md)
 
+(In case I've missed some plugins from this list, you can see the [docs](docs/) folder for available plugins)
+
 TypeScript
 ----------
 This package includes some documentation updates for Eris. I have tried to overwrite the typings as best as I can, however if there are any errors or issues, please let me know.
