@@ -13,7 +13,7 @@ Installation and Usage
 You will need to have at least Eris v0.13.3 installed. Previous versions of Eris will not be tested for compatibility. You must also make sure that other packages do not conflict with Pluris.
 
 ```sh
-$ npm i bsian03/pluris
+$ npm i pluris
 ```
 After installing Pluris, make sure you initialise Eris with Pluris
 ```js
@@ -29,10 +29,11 @@ Setting the plugin to `true` will keep the plugin enabled
 
 Plugins
 -------
-- [awaitMessages](docs/awaitMessages)
-- [awaitReactions](docs/awaitReactions)
-- [createDMMessage](docs/createDMMessage)
-- [embed](docs/embed)
+- [awaitMessages](docs/awaitMessages.md)
+- [awaitReactions](docs/awaitReactions.md)
+- [createDMMessage](docs/createDMMessage.md)
+- [embed](docs/embed.md)
+- [messageGuild](docs/messageGuild.md)
 
 TypeScript
 ----------
