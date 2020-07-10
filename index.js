@@ -7,7 +7,7 @@ let plugins;
  * @param {Object.<string, Boolean>} options
  */
 module.exports = async (Eris, options = {}) => {
-  plugins = Object.fromEntries((await readdir('./src')).map((p) => [p, true]));
+  plugins = Object.fromEntries((await readdir(`${__dirname}/src`)).map((p) => [p, true]));
   const selectedPlugins = Object.keys(options);
   selectedPlugins.forEach((k) => {
     if (typeof plugins[k] === 'undefined') return console.error(`Unknown option: ${k}`);
