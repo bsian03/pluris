@@ -1,6 +1,6 @@
 {
   "name": "pluris",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "Extra prototypes and utilities for the Eris Discord API Library",
   "main": "index.js",
   "scripts": {
