@@ -33,6 +33,7 @@ Plugins
 - [awaitReactions](docs/awaitReactions.md)
 - [createDMMessage](docs/createDMMessage.md)
 - [embed](docs/embed.md)
+- [erisEndpoints](docs/erisEndpoints.md)
 - [messageGuild](docs/messageGuild.md)
 
 (In case I've missed some plugins from this list, you can see the [docs](docs/) folder for available plugins)
