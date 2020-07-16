@@ -7,8 +7,7 @@ module.exports = {
    */
   loadPrototype: (Eris, Class, fn, getter = false) => {
     if (Eris[Class].prototype[fn.name] !== undefined) return console.warn(`${fn.name} prototype already exists in ${Class}! ${this.warningMessage('prototype')}`);
-    const bound = fn.bind(Eris[Class].prototype);
-    Object.defineProperty(Eris[Class].prototype, fn.name, getter ? { get: bound } : { value: bound });
+    Object.defineProperty(Eris[Class].prototype, fn.name, getter ? { get: fn } : { value: fn });
     console.log(`Loaded ${Class}#${fn.name}`);
   },
 
