@@ -21,7 +21,7 @@
     "url": "https://github.com/bsian03/pluris/issues"
   },
   "homepage": "https://github.com/bsian03/pluris#readme",
-  "peerDependencies": {
+  "dependencies": {
     "eris": ">=0.13.3"
   },
   "optionalDependencies": {
