@@ -100,6 +100,95 @@ declare module 'eris' {
     createMessage(channelID: string, content: MessageContent | { embed?: Embed }, file?: MessageFile | MessageFile[]): Promise<Message>;
     createDMMessage(userID: string, content: MessageContent | { embed?: Embed }, file?: MessageFile | MessageFile[]): Promise<Message<PrivateChannel>>;
   }
+
+  interface Endpoints {
+    BASE_URL: '/api/v7';
+    CDN_URL: 'https://cdn.discordapp.com';
+    CHANNEL(chanID: string): string;
+    CHANNEL_BULK_DELETE(chanID: string): string;
+    CHANNEL_CALL_RING(chanID: string): string;
+    CHANNEL_CROSSPOST(chanID: string, msgID: string): string;
+    CHANNEL_FOLLOW(chanID: string): string;
+    CHANNEL_INVITES(chanID: string): string;
+    CHANNEL_MESSAGE_REACTION(chanID: string, msgID: string, reaction: string): string;
+    CHANNEL_MESSAGE_REACTION_USER(chanID: string, msgID: string, reaction: string, userID: string): string;
+    CHANNEL_MESSAGE_REACTIONS(chanID: string, msgID: string): string;
+    CHANNEL_MESSAGE(chanID: string, msgID: string): string;
+    CHANNEL_MESSAGES(chanID: string): string;
+    CHANNEL_MESSAGES_SEARCH(chanID: string): string;
+    CHANNEL_PERMISSION(chanID: string, overID: string): string;
+    CHANNEL_PERMISSIONS(chanID: string): string;
+    CHANNEL_PIN(chanID: string, msgID: string): string;
+    CHANNEL_PINS(chanID: string): string;
+    CHANNEL_RECIPIENT(groupID: string, userID: string): string;
+    CHANNEL_TYPING(chanID: string): string;
+    CHANNEL_WEBHOOKS(chanID: string): string;
+    CHANNELS: '/channels';
+    GATEWAY: '/gateway';
+    GATEWAY_BOT: '/gateway/bot';
+    GUILD(guildID: string): string;
+    GUILD_AUDIT_LOGS(guildID: string): string;
+    GUILD_BAN(guildID: string, memberID: string): string;
+    GUILD_BANS(guildID: string): string;
+    GUILD_CHANNELS(guildID: string): string;
+    GUILD_EMBED(guildID: string): string;
+    GUILD_EMOJI(guildID: string, emojiID: string): string;
+    GUILD_EMOJIS(guildID: string): string;
+    GUILD_INTEGRATION(guildID: string, inteID: string): string;
+    GUILD_INTEGRATION_SYNC(guildID: string, inteID: string): string;
+    GUILD_INTEGRATIONS(guildID: string): string;
+    GUILD_INVITES(guildID: string): string;
+    GUILD_VANITY_URL(guildID: string): string;
+    GUILD_MEMBER(guildID: string, memberID: string): string;
+    GUILD_MEMBER_NICK(guildID: string, memberID: string): string;
+    GUILD_MEMBER_ROLE(guildID: string, memberID: string, roleID: string): string;
+    GUILD_MEMBERS(guildID: string): string;
+    GUILD_MEMBERS_SEARCH(guildID: string): string;
+    GUILD_MESSAGES_SEARCH(guildID: string): string;
+    GUILD_PREVIEW(guildID: string): string;
+    GUILD_PRUNE(guildID: string): string;
+    GUILD_ROLE(guildID: string, roleID: string): string;
+    GUILD_ROLES(guildID: string): string;
+    GUILD_VOICE_REGIONS(guildID: string): string;
+    GUILD_WEBHOOKS(guildID: string): string;
+    GUILD_WIDGET(guildID: string): string;
+    GUILDS: '/guilds';
+    INVITE(inviteID: string): string;
+    OAUTH2_APPLICATION(appID: string): string;
+    USER(userID: string): string;
+    USER_BILLING(userID: string): string;
+    USER_BILLING_PAYMENTS(userID: string): string;
+    USER_BILLING_PREMIUM_SUBSCRIPTION(userID: string): string;
+    USER_CHANNELS(userID: string): string;
+    USER_CONNECTIONS(userID: string): string;
+    USER_CONNECTION_PLATFORM(userID: string, platform: string, id: string): string;
+    USER_GUILD(userID: string, guildID: string): string;
+    USER_GUILDS(userID: string): string;
+    USER_MFA_CODES(userID: string): string;
+    USER_MFA_TOTP_DISABLE(userID: string): string;
+    USER_MFA_TOTP_ENABLE(userID: string): string;
+    USER_NOTE(userID: string, targetID: string): string;
+    USER_PROFILE(userID: string): string;
+    USER_RELATIONSHIP(userID: string, relID: string): string;
+    USER_SETTINGS(userID: string): string;
+    USERS: '/users';
+    VOICE_REGIONS: '/voice/regions';
+    WEBHOOK(hookID: string): string;
+    WEBHOOK_SLACK(hookID: string): string;
+    WEBHOOK_TOKEN(hookID: string, token: string): string;
+    WEBHOOK_TOKEN_SLACK(hookID: string, token: string): string;
+
+    // CDN Endpoints
+    CHANNEL_ICON(chanID: string, chanIcon: string): string;
+    CUSTOM_EMOJI(emojiID: string): string;
+    DEFAULT_USER_AVATAR(userDiscriminator: string): string;
+    GUILD_BANNER(guildID: string, guildBanner: string): string;
+    GUILD_ICON(guildID: string, guildIcon: string): string;
+    GUILD_SPLASH(guildID: string, guildSplash: string): string;
+    USER_AVATAR(userID: string, userAvatar: string): string;
+  }
+
+  const Endpoints: Endpoints;
 }
 
 declare type PlurisPlugins = { [plugin: string]: boolean };
