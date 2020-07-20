@@ -131,7 +131,7 @@ class Embed {
 
     if (url !== undefined) {
       if (typeof url !== 'string') throw new TypeError(`Expected type 'string', received type '${typeof url}'`);
-      if (!URL_REGEX.test(iconURL)) throw new Error('Not a well formed URL');
+      if (!URL_REGEX.test(url)) throw new Error('Not a well formed URL');
       this.author.url = url;
     }
 
