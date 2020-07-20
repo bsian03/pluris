@@ -51,7 +51,7 @@ declare module 'eris' {
     setTitle(title: string): this;
     setDescription(description: string): this;
     setURL(url: string): this;
-    setTimestamp(timestamp?: DateConstructor): this;
+    setTimestamp(timestamp?: number | string | Date): this;
     setColor(color: string|number): this;
     setFooter(text: string, iconURL?: string): this;
     setImage(imageURL: string): this;
