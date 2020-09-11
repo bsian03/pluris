@@ -31,6 +31,7 @@ Plugins
 - [embed](docs/embed.md)
 - [endpoints](docs/endpoints.md)
 - [messageGuild](docs/messageGuild.md)
+- [roleList](docs/roleList.md)
 - [webhook](docs/webhook.md)
 
 (In case I've missed some plugins from this list, you can see the [docs](docs/) folder for available plugins)

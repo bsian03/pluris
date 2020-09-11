@@ -137,6 +137,10 @@ declare module 'eris' {
     webhooks: Collection<DiscordWebhook>;
   }
 
+  interface Member {
+    roleList: Collection<Role>;
+  }
+
   interface Endpoints {
     BASE_URL: '/api/v7';
     CDN_URL: 'https://cdn.discordapp.com';
