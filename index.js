@@ -20,7 +20,7 @@ module.exports = async (Eris, options = {}) => {
     if (plugins[k] === false) return;
     const plugin = require(`./src/${k}`);
 
-    plugin.init(Eris);
+    plugin.init(Eris, plugins);
     delete plugin.init;
     console.log(`Loaded plugin: ${k}`);
     count += 1;

@@ -60,6 +60,27 @@ declare module 'eris' {
     addField(name: string, value: string, inline?: boolean): this;
   }
 
+  class DiscordWebhook extends Base {
+    client: Client;
+    type: 1 | 2;
+    channel: GuildTextableChannel;
+    name: string | null;
+    avatar: string | null;
+    avatarURL: string;
+    guild?: Guild | { id: string };
+    user?: User;
+    token?: string;
+    defaultAvatarURL: string;
+    constructor(data: BaseData, client: Client);
+    update(data: BaseData): void;
+    delete(token?: boolean): Promise<void>;
+    edit(options: { avatar?: string; channelID?: string; name?: string }, token?: boolean, reason?: string): Promise<this>; // WebhookOptions
+    execute(options: WebhookPayload): Promise<void>;
+    execute(options: WebhookPayload & {wait: true}): Promise<Message<GuildTextableChannel>>;
+    executeSlack(options: Record<string, unknown> & { auth?: boolean }): Promise<void>;
+    executeSlack(options: Record<string, unknown> & { auth?: boolean; wait: true }): Promise<Message<GuildTextableChannel>>;
+  }
+
   interface Textable {
     awaitMessages(options: MessageCollectorOptions): Promise<MessageCollector>;
     createMessage(content: MessageContent | { embed?: Embed }, file?: MessageFile | MessageFile[]): Promise<Message>;
@@ -73,6 +94,8 @@ declare module 'eris' {
   interface TextChannel {
     awaitMessages(options: MessageCollectorOptions): Promise<MessageCollector<TextChannel>>;
     createMessage(content: MessageContent | { embed?: Embed }, file?: MessageFile | MessageFile[]): Promise<Message<TextChannel>>;
+    syncWebhooks(): Promise<void>;
+    webhooks: Collection<DiscordWebhook>;
   }
 
   interface NewsChannel {
@@ -88,6 +111,7 @@ declare module 'eris' {
   interface Message<T extends Textable = TextableChannel> {
     awaitReactions(options: ReactionCollectorOptions): Promise<ReactionCollector<T>>;
     guild: T extends GuildTextable ? Guild : undefined;
+    webhook: DiscordWebhook | { id: string };
   }
 
   interface User {
@@ -99,6 +123,13 @@ declare module 'eris' {
     awaitMessageReactions(message: Message, options: ReactionCollectorOptions): Promise<ReactionCollector>;
     createMessage(channelID: string, content: MessageContent | { embed?: Embed }, file?: MessageFile | MessageFile[]): Promise<Message>;
     createDMMessage(userID: string, content: MessageContent | { embed?: Embed }, file?: MessageFile | MessageFile[]): Promise<Message<PrivateChannel>>;
+    syncChannelWebhooks(channelID: string): Promise<void>;
+    syncGuildWebhooks(guildID: string): Promise<void>;
+  }
+
+  interface Guild {
+    syncWebhooks(): Promise<void>;
+    webhooks: Collection<DiscordWebhook>;
   }
 
   interface Endpoints {

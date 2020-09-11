@@ -24,6 +24,7 @@
         "import/no-dynamic-require": "off",
         "import/no-extraneous-dependencies": "off",
         "prefer-arrow-callback": "off",
+        "class-methods-use-this": "off",
         // TypeScript rules
         "max-classes-per-file": "off", // TS throws a fit
         "@typescript-eslint/dot-notation": "off",
