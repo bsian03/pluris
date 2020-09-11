@@ -3,22 +3,22 @@
 Embed Constructor for sending embeds
 
 ## channel.createMessage(content, file);
-> | Parameter       | Type                             | Default | Description  |
-> |-----------------|----------------------------------|---------|--------------|
-> | [content]       | Object\|String                   |         | Message data |
-> | [content.embed] | Embed                            |         | Embed class  |
-> | [file]          | MessageFile\|Array\<MessageFile> |         | Message File |
+> | Parameter       | Type                             | Default | Description     |
+> |-----------------|----------------------------------|---------|-----------------|
+> | [content]       | Object\|String                   |         | Message data    |
+> | [content.embed] | RichEmbed                        |         | RichEmbed class |
+> | [file]          | MessageFile\|Array\<MessageFile> |         | Message File    |
 
 ## client.createMessage(channelID, content, file);
-> | Parameter       | Type                             | Default | Description  |
-> |-----------------|----------------------------------|---------|--------------|
-> | channelID       | String                           |         | Channel ID   |
-> | [content]       | Object\|String                   |         | Message data |
-> | [content.embed] | Embed                            |         | Embed class  |
-> | [file]          | MessageFile\|Array\<MessageFile> |         | Message File |
+> | Parameter       | Type                             | Default | Description     |
+> |-----------------|----------------------------------|---------|-----------------|
+> | channelID       | String                           |         | Channel ID      |
+> | [content]       | Object\|String                   |         | Message data    |
+> | [content.embed] | RichEmbed                        |         | RichEmbed class |
+> | [file]          | MessageFile\|Array\<MessageFile> |         | Message File    |
 
-## Class: Embed
-### Constructor `new Eris.Embed(data);`
+## Class: RichEmbed
+### Constructor `new Eris.RichEmbed(data);`
 > | Parameter | Type   | Default | Description             |
 > |-----------|--------|---------|-------------------------|
 > | data      | Object | {}      | Embed Data from Discord |
@@ -44,7 +44,7 @@ Embed Constructor for sending embeds
 > |-----------|--------|---------|-------------|
 > | title     | String |         | Embed Title |
 >
-> Returns `Embed`
+> Returns `RichEmbed`
 
 #### setDescription(description)
 > Sets the Embed Description
@@ -52,7 +52,7 @@ Embed Constructor for sending embeds
 > |-------------|--------|---------|-------------------|
 > | description | String |         | Embed Description |
 >
-> Returns `Embed`
+> Returns `RichEmbed`
 
 #### setURL(url)
 > Sets the Embed URL
@@ -60,7 +60,7 @@ Embed Constructor for sending embeds
 > |-----------|--------|---------|-------------|
 > | url       | String |         | Embed URL   |
 >
-> Returns `Embed`
+> Returns `RichEmbed`
 
 #### setTimestamp(timestamp)
 > Sets the Embed Timestamp
@@ -68,7 +68,7 @@ Embed Constructor for sending embeds
 > |-------------|----------------------|------------|-----------------|
 > | [timestamp] | String\|Number\|Date | new Date() | Embed Timestamp |
 >
-> Returns `Embed`
+> Returns `RichEmbed`
 
 #### setColor(color)
 > Sets the Embed Color
@@ -76,7 +76,7 @@ Embed Constructor for sending embeds
 > |-----------|----------------|---------|-------------|
 > | color     | String\|Number |         | Embed Color |
 >
-> Returns `Embed`
+> Returns `RichEmbed`
 
 #### setFooter(text, iconURL)
 > Sets the Embed Footer
@@ -85,7 +85,7 @@ Embed Constructor for sending embeds
 > | text      | String |         | Footer Text |
 > | [iconURL] | String |         | Footer Icon |
 >
-> Returns `Embed`
+> Returns `RichEmbed`
 
 #### setImage(imageURL)
 > Sets the Embed Image
@@ -93,7 +93,7 @@ Embed Constructor for sending embeds
 > |-----------|--------|---------|-------------|
 > | imageURL  | String |         | Embed Image |
 >
-> Returns `Embed`
+> Returns `RichEmbed`
 
 #### setThumbnail(thumbnailURL)
 > Sets the Embed Thumbnail
@@ -101,7 +101,7 @@ Embed Constructor for sending embeds
 > |--------------|--------|---------|-----------------|
 > | thumbnailURL | String |         | Embed Thumbnail |
 >
-> Returns `Embed`
+> Returns `RichEmbed`
 
 #### setAuthor(name, url, iconURL)
 > Sets the Embed Author
@@ -111,7 +111,7 @@ Embed Constructor for sending embeds
 > | [url]     | String |         | Author URL  |
 > | [iconURL] | String |         | Author Icon |
 >
-> Returns `Embed`
+> Returns `RichEmbed`
 
 #### addField(name, value, inline)
 > Adds an Embed Field
@@ -121,4 +121,4 @@ Embed Constructor for sending embeds
 > | value     | String  |         | Field Value  |
 > | [inline]  | Boolean | false   | Field Inline |
 >
-> Returns `Embed`
+> Returns `RichEmbed`

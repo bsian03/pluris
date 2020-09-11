@@ -8,7 +8,7 @@ const { loadImport } = require('../../misc');
 const HEX_REGEX = /^#?([a-fA-F0-9]{6})$/;
 const URL_REGEX = /^http(s)?:\/\/[\w.-]+(?:\.[\w.-]+)+[\w\-._~:/?#[\]@!$&'()*+,;=.]+$/;
 
-class Embed {
+class RichEmbed {
   /**
    * @param {EmbedData} data
    */
@@ -162,11 +162,14 @@ class Embed {
   }
 }
 
-module.exports = Embed;
+class Embed extends RichEmbed {}
+
+module.exports = RichEmbed;
 
 /**
  * @param {Eris} E
  */
 module.exports.init = (E) => {
+  loadImport(E, RichEmbed);
   loadImport(E, Embed);
 };

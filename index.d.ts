@@ -46,7 +46,7 @@ declare module 'eris' {
     on(listener: 'collect', event: (x: CollectedReaction) => void): this;
   }
 
-  class Embed implements EmbedOptions {
+  class RichEmbed implements EmbedOptions {
     fields: EmbedField[];
     setTitle(title: string): this;
     setDescription(description: string): this;
@@ -59,6 +59,11 @@ declare module 'eris' {
     setAuthor(name: string, url?: string, iconURL?: string): this;
     addField(name: string, value: string, inline?: boolean): this;
   }
+
+  /**
+   * @deprecated Use Eris.RichEmbed instead
+   */
+  export class Embed extends RichEmbed {}
 
   class DiscordWebhook extends Base {
     client: Client;
@@ -83,29 +88,29 @@ declare module 'eris' {
 
   interface Textable {
     awaitMessages(options: MessageCollectorOptions): Promise<MessageCollector>;
-    createMessage(content: MessageContent | { embed?: Embed }, file?: MessageFile | MessageFile[]): Promise<Message>;
+    createMessage(content: MessageContent | { embed?: RichEmbed }, file?: MessageFile | MessageFile[]): Promise<Message>;
   }
 
   interface GuildTextable {
     awaitMessages(options: MessageCollectorOptions): Promise<MessageCollector<GuildTextableChannel>>;
-    createMessage(content: MessageContent | { embed?: Embed }, file?: MessageFile | MessageFile[]): Promise<Message<GuildTextableChannel>>;
+    createMessage(content: MessageContent | { embed?: RichEmbed }, file?: MessageFile | MessageFile[]): Promise<Message<GuildTextableChannel>>;
   }
 
   interface TextChannel {
     awaitMessages(options: MessageCollectorOptions): Promise<MessageCollector<TextChannel>>;
-    createMessage(content: MessageContent | { embed?: Embed }, file?: MessageFile | MessageFile[]): Promise<Message<TextChannel>>;
+    createMessage(content: MessageContent | { embed?: RichEmbed }, file?: MessageFile | MessageFile[]): Promise<Message<TextChannel>>;
     syncWebhooks(): Promise<void>;
     webhooks: Collection<DiscordWebhook>;
   }
 
   interface NewsChannel {
     awaitMessages(options: MessageCollectorOptions): Promise<MessageCollector<NewsChannel>>;
-    createMessage(content: MessageContent | { embed?: Embed }, file?: MessageFile | MessageFile[]): Promise<Message<NewsChannel>>;
+    createMessage(content: MessageContent | { embed?: RichEmbed }, file?: MessageFile | MessageFile[]): Promise<Message<NewsChannel>>;
   }
 
   interface PrivateChannel {
     awaitMessages(options: MessageCollectorOptions): Promise<MessageCollector<PrivateChannel>>;
-    createMessage(content: MessageContent | { embed?: Embed }, file?: MessageFile | MessageFile[]): Promise<Message<PrivateChannel>>;
+    createMessage(content: MessageContent | { embed?: RichEmbed }, file?: MessageFile | MessageFile[]): Promise<Message<PrivateChannel>>;
   }
 
   interface Message<T extends Textable = TextableChannel> {
@@ -115,14 +120,14 @@ declare module 'eris' {
   }
 
   interface User {
-    createMessage(content: MessageContent | { embed?: Embed }, file?: MessageFile | MessageFile[]): Promise<Message<PrivateChannel>>;
+    createMessage(content: MessageContent | { embed?: RichEmbed }, file?: MessageFile | MessageFile[]): Promise<Message<PrivateChannel>>;
   }
 
   interface Client {
     awaitChannelMessages(channel: TextableChannel, options: MessageCollectorOptions): Promise<MessageCollector>;
     awaitMessageReactions(message: Message, options: ReactionCollectorOptions): Promise<ReactionCollector>;
-    createMessage(channelID: string, content: MessageContent | { embed?: Embed }, file?: MessageFile | MessageFile[]): Promise<Message>;
-    createDMMessage(userID: string, content: MessageContent | { embed?: Embed }, file?: MessageFile | MessageFile[]): Promise<Message<PrivateChannel>>;
+    createMessage(channelID: string, content: MessageContent | { embed?: RichEmbed }, file?: MessageFile | MessageFile[]): Promise<Message>;
+    createDMMessage(userID: string, content: MessageContent | { embed?: RichEmbed }, file?: MessageFile | MessageFile[]): Promise<Message<PrivateChannel>>;
     syncChannelWebhooks(channelID: string): Promise<void>;
     syncGuildWebhooks(guildID: string): Promise<void>;
   }
