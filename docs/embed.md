@@ -24,18 +24,18 @@ Embed Constructor for sending embeds
 > | data      | Object | {}      | Embed Data from Discord |
 
 ### Properties
-> | Property    | Type          | Description       |
-> |-------------|---------------|-------------------|
-> | title       | String?       | Embed Title       |
-> | description | String?       | Embed Description |
-> | url         | String?       | Embed URL         |
-> | timestamp   | Date?         | Embed Date        |
-> | color       | Number?       | Embed Color       |
-> | footer      | Object?       | Embed Footer      |
-> | image       | Object?       | Embed Image       |
-> | thumbnail   | Object?       | Embed Thumbnail   |
-> | author      | Object?       | Embed Author      |
-> | fields      | Array\<Field> | Embed Fields      |
+> | Property     | Type          | Description       |
+> |--------------|---------------|-------------------|
+> | title?       | String        | Embed Title       |
+> | description? | String        | Embed Description |
+> | url?         | String        | Embed URL         |
+> | timestamp?   | Date          | Embed Date        |
+> | color?       | Number        | Embed Color       |
+> | footer?      | Object        | Embed Footer      |
+> | image?       | Object        | Embed Image       |
+> | thumbnail?   | Object        | Embed Thumbnail   |
+> | author?      | Object        | Embed Author      |
+> | fields       | Array\<Field> | Embed Fields      |
 
 ### Functions
 #### setTitle(title)

@@ -49,8 +49,8 @@ Webhook Cache. Includes a DiscordWebhook class
 > | client           | Client               | Bot Client                                                                                       |
 > | type             | Number               | `1` is a normal webhook, `2` is a channel follower webhook                                       |
 > | channel          | GuildTextableChannel | Channel the webhook belongs in                                                                   |
-> | name             | String?              | Default name of webhook                                                                          |
-> | avatar           | String?              | Default avatar hash of webhook                                                                   |
+> | name             | ?String              | Default name of webhook                                                                          |
+> | avatar           | ?String              | Default avatar hash of webhook                                                                   |
 > | avatarURL        | String               | Default avatar URL of webhook                                                                    |
 > | guild?           | Guild \| Object      | Guild the webhook belongs in. This will be an object with an `id` key if the guild is not cached |
 > | user?            | User                 | User that created the webhook                                                                    |
