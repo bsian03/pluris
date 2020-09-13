@@ -96,14 +96,14 @@ module.exports.init = (E, config) => {
     return this._client.syncGuildWebhooks(this.id);
   });
   loadPrototype(E, 'Guild', function webhooks() {
-    if (!this.webhooks) return new E.Collection(DiscordWebhook);
-    return this.webhooks;
+    if (!this._webhooks) this._webhooks = new E.Collection(DiscordWebhook);
+    return this._webhooks;
   }, true);
   loadPrototype(E, 'TextChannel', function syncWebhooks() {
     return this.client.syncChannelWebhooks(this.id);
   });
   loadPrototype(E, 'TextChannel', function webhooks() {
-    if (!this.webhooks) return new E.Collection(DiscordWebhook);
-    return this.webhooks;
+    if (!this._webhooks) this._webhooks = new E.Collection(DiscordWebhook);
+    return this._webhooks;
   }, true);
 };
