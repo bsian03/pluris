@@ -40,7 +40,7 @@ class RichEmbed {
    */
   setDescription(description) {
     if (typeof description !== 'string') throw new TypeError(`Expected type 'string', received type '${typeof description}'`);
-    if (description.length > 2048) throw new RangeError('Embed titles cannot exceed 2048 characters');
+    if (description.length > 2048) throw new RangeError('Embed descriptions cannot exceed 2048 characters');
     this.description = description;
     return this;
   }
@@ -126,7 +126,7 @@ class RichEmbed {
    */
   setAuthor(name, url, iconURL) {
     if (typeof name !== 'string') throw new TypeError(`Expected type 'string', received type ${typeof name}`);
-    if (name.length > 256) throw new RangeError('Embed footer texts cannot exceed 2048 characters');
+    if (name.length > 256) throw new RangeError('Embed author names cannot exceed 256 characters');
     this.author = { name };
 
     if (url !== undefined) {
@@ -155,7 +155,7 @@ class RichEmbed {
     if (typeof value !== 'string') throw new TypeError(`Expected type 'string', received type ${typeof value}`);
     if (typeof inline !== 'boolean') throw new TypeError(`Expected type 'boolean', received type ${typeof inline}`);
     if (name.length > 256) throw new RangeError('Embed field names cannot exceed 256 characters');
-    if (value.length > 1024) throw new RangeError('Embed field names cannot exceed 256 characters');
+    if (value.length > 1024) throw new RangeError('Embed field descriptions cannot exceed 1024 characters');
 
     this.fields.push({ name, value, inline });
     return this;
