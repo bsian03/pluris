@@ -6,7 +6,7 @@ Extra prototypes and utilities for the [Eris](https://npmjs.com/package/eris) Di
 ---
 Installation and Usage
 ----------------------
-You will need to have at least Eris v0.13.3 installed. Previous versions of Eris will not be tested for compatibility. You must also make sure that other packages do not conflict with Pluris.
+You will need to have at least Eris v0.14.0 installed. Previous versions of Eris may work but will not be tested for compatibility with the current version of Pluris. You must also make sure that other packages do not conflict with Pluris.
 
 ```sh
 $ npm i pluris

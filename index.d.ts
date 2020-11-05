@@ -144,6 +144,7 @@ declare module 'eris' {
   interface Endpoints {
     BASE_URL: '/api/v7';
     CDN_URL: 'https://cdn.discordapp.com';
+    CLIENT_URL: 'https://discord.com';
     CHANNEL(chanID: string): string;
     CHANNEL_BULK_DELETE(chanID: string): string;
     CHANNEL_CALL_RING(chanID: string): string;
@@ -223,9 +224,13 @@ declare module 'eris' {
     CUSTOM_EMOJI(emojiID: string): string;
     DEFAULT_USER_AVATAR(userDiscriminator: string): string;
     GUILD_BANNER(guildID: string, guildBanner: string): string;
+    GUILD_DISCOVERY_SPLASH(guildID: string, guildDiscoverySplash: string): string;
     GUILD_ICON(guildID: string, guildIcon: string): string;
     GUILD_SPLASH(guildID: string, guildSplash: string): string;
     USER_AVATAR(userID: string, userAvatar: string): string;
+
+    // Client Endpoints
+    MESSAGE_LINK(guildID: string, channelID: string, messageID: string): string;
   }
 
   const Endpoints: Endpoints;
