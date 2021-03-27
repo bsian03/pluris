@@ -60,11 +60,6 @@ declare module 'eris' {
     addField(name: string, value: string, inline?: boolean): this;
   }
 
-  /**
-   * @deprecated Use Eris.RichEmbed instead
-   */
-  export class Embed extends RichEmbed {}
-
   class DiscordWebhook extends Base {
     client: Client;
     type: 1 | 2;
