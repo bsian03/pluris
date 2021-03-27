@@ -160,9 +160,7 @@ class RichEmbed {
     this.fields.push({ name, value, inline });
     return this;
   }
-}
 
-class Embed extends RichEmbed {}
 
 module.exports = RichEmbed;
 
@@ -171,5 +169,4 @@ module.exports = RichEmbed;
  */
 module.exports.init = (E) => {
   loadImport(E, RichEmbed);
-  loadImport(E, Embed);
 };
