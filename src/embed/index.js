@@ -160,6 +160,7 @@ class RichEmbed {
     this.fields.push({ name, value, inline });
     return this;
   }
+}
 
 
 module.exports = RichEmbed;
