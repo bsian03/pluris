@@ -21,7 +21,7 @@ A clear and concise description of what you expected to happen.
 **Environment**
 | Node version | Eris version | Pluris version |
 |--------------|--------------|----------------|
-| v12.18.3     | 0.14.0       | 0.3.3          |
+| v12.18.3     | 0.15.0       | 0.3.4          |
 
 **Additional context**
 - [ ] I know exactly what the issue is and will create a PR to fix it.
