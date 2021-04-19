@@ -14,13 +14,13 @@ declare module 'eris' {
     filter?: (userID: string) => boolean;
   }
 
-  interface CollectedReaction<T extends Textable = TextableChannel> {
+  interface CollectedReaction<T extends TextableTextableChannel> {
     msg: Message<T>;
     emoji: Emoji;
     userID: string;
   }
 
-  class MessageCollector<T extends Textable = TextableChannel> extends EventEmitter implements MessageCollectorOptions {
+  class MessageCollector<T extends TextableTextableChannel> extends EventEmitter implements MessageCollectorOptions {
     channel: T;
     timeout: number;
     count: number;
@@ -34,7 +34,7 @@ declare module 'eris' {
     on(listener: 'stop', event: () => void): this;
   }
 
-  class ReactionCollector<T extends Textable = TextableChannel> extends EventEmitter implements ReactionCollectorOptions {
+  class ReactionCollector<T extends TextableTextableChannel> extends EventEmitter implements ReactionCollectorOptions {
     message: Message<T>;
     timeout: number;
     count: number;
@@ -108,7 +108,7 @@ declare module 'eris' {
     createMessage(content: MessageContent | { embed?: RichEmbed }, file?: MessageFile | MessageFile[]): Promise<Message<PrivateChannel>>;
   }
 
-  interface Message<T extends Textable = TextableChannel> {
+  interface Message<T extends TextableTextableChannel> {
     awaitReactions(options: ReactionCollectorOptions): Promise<ReactionCollector<T>>;
     guild: T extends GuildTextable ? Guild : undefined;
     webhook: DiscordWebhook | { id: string };
@@ -160,6 +160,9 @@ declare module 'eris' {
     CHANNEL_TYPING(chanID: string): string;
     CHANNEL_WEBHOOKS(chanID: string): string;
     CHANNELS: '/channels';
+    CUSTOM_EMOJI_GUILD(emojiID: string): string;
+    DISCOVERY_CATEGORIES: '/discovery/categories';
+    DISCOVERY_VALIDATION: '/discovery/valid-term';
     GATEWAY: '/gateway';
     GATEWAY_BOT: '/gateway/bot';
     GUILD(guildID: string): string;
@@ -167,6 +170,8 @@ declare module 'eris' {
     GUILD_BAN(guildID: string, memberID: string): string;
     GUILD_BANS(guildID: string): string;
     GUILD_CHANNELS(guildID: string): string;
+    GUILD_DISCOVERY(guildID: string): string;
+    GUILD_DISCOVERY_CATEGORY(guildID: string, categoryID: string): string;
     GUILD_EMBED(guildID: string): string;
     GUILD_EMOJI(guildID: string, emojiID: string): string;
     GUILD_EMOJIS(guildID: string): string;
@@ -185,6 +190,9 @@ declare module 'eris' {
     GUILD_PRUNE(guildID: string): string;
     GUILD_ROLE(guildID: string, roleID: string): string;
     GUILD_ROLES(guildID: string): string;
+    GUILD_TEMPLATE(code: string): string;
+    GUILD_TEMPLATES(guildID: string): string;
+    GUILD_TEMPLATE_GUILD(guildID: string, code: string): string;
     GUILD_VOICE_REGIONS(guildID: string): string;
     GUILD_WEBHOOKS(guildID: string): string;
     GUILD_WIDGET(guildID: string): string;
@@ -210,11 +218,15 @@ declare module 'eris' {
     USERS: '/users';
     VOICE_REGIONS: '/voice/regions';
     WEBHOOK(hookID: string): string;
+    WEBHOOK_MESSAGE(hookID: string, token: string, msgID: string): string;
     WEBHOOK_SLACK(hookID: string): string;
     WEBHOOK_TOKEN(hookID: string, token: string): string;
     WEBHOOK_TOKEN_SLACK(hookID: string, token: string): string;
 
     // CDN Endpoints
+    ACHIEVEMENT_ICON(applicationID: string, achievementID: string, icon: string): string;
+    APPLICATION_ASSET(applicationID: string, asset: string): string;
+    APPLICATION_ICON(applicationID: string, icon: string): string;
     CHANNEL_ICON(chanID: string, chanIcon: string): string;
     CUSTOM_EMOJI(emojiID: string): string;
     DEFAULT_USER_AVATAR(userDiscriminator: string): string;
@@ -222,6 +234,7 @@ declare module 'eris' {
     GUILD_DISCOVERY_SPLASH(guildID: string, guildDiscoverySplash: string): string;
     GUILD_ICON(guildID: string, guildIcon: string): string;
     GUILD_SPLASH(guildID: string, guildSplash: string): string;
+    TEAM_ICON(teamID: string, teamIcon: string): string;
     USER_AVATAR(userID: string, userAvatar: string): string;
 
     // Client Endpoints
