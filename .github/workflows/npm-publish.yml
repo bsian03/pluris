@@ -41,7 +41,7 @@ jobs:
           node-version: 12
           registry-url: https://npm.pkg.github.com/
           scope: '@bsian03'
-      - uses: khaaz/action-autoscope@master
+      - uses: khaaz/action-autoscope@main
       - run: npm ci
       - run: npm i eris
       - run: echo registry=https://npm.pkg.github.com/bsian03 >> .npmrc
