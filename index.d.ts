@@ -14,7 +14,7 @@ declare module 'eris' {
     filter?: (userID: string) => boolean;
   }
 
-  interface CollectedReaction<T extends Textable> {
+  interface CollectedReaction<T extends PossiblyUncachedTextable> {
     msg: Message<T>;
     emoji: Emoji;
     userID: string;
@@ -34,7 +34,7 @@ declare module 'eris' {
     on(listener: 'stop', event: () => void): this;
   }
 
-  class ReactionCollector<T extends Textable> extends EventEmitter implements ReactionCollectorOptions {
+  class ReactionCollector<T extends PossiblyUncachedTextable> extends EventEmitter implements ReactionCollectorOptions {
     message: Message<T>;
     timeout: number;
     count: number;
@@ -108,7 +108,7 @@ declare module 'eris' {
     createMessage(content: MessageContent | { embed?: RichEmbed }, file?: MessageFile | MessageFile[]): Promise<Message<PrivateChannel>>;
   }
 
-  interface Message<T extends Textable = TextableChannel> {
+  interface Message<T extends PossiblyUncachedTextable = TextableChannel> {
     awaitReactions(options: ReactionCollectorOptions): Promise<ReactionCollector<T>>;
     guild: T extends GuildTextable ? Guild : undefined;
     webhook: DiscordWebhook | { id: string };
