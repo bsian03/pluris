@@ -197,6 +197,7 @@ declare module 'eris' {
     GUILD_VOICE_REGIONS(guildID: string): `/guilds/${string}/regions`;
     GUILD_WEBHOOKS(guildID: string): `/guilds/${string}/webhooks`;
     GUILD_WIDGET(guildID: string): `/guilds/${string}/widget`;
+    GUILD_VOICE_STATE(guildID: string, user: string): `/guilds/${string}/voice-states/${string}`
     GUILDS: '/guilds';
     INVITE(inviteID: string): `/invite/${string}`;
     OAUTH2_APPLICATION(appID: string): `/oauth2/applications/${string}`;
