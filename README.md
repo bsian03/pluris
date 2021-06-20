@@ -44,7 +44,7 @@ Need some help?
 ---------------
 Feel free to contact me by joining either servers:
 - [Axon Labs](https://discord.gg/QZ6B5US) (preferred) in the #other-support channel
-- [Dyno](https://discord.gg/dyno) (most active) in the #code-talk channel, by running `?rank Code` in #commands when joining the server
+- [Dyno](https://discord.gg/dyno) (most active) in the #code-dev channel, by running `?rank Code` in #commands when joining the server
 - I kindly ask you not to use the #js_eris channel in Discord API so that the channel can be focused on Eris itself
 
 License
