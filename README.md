@@ -3,6 +3,9 @@ Pluris
 
 Extra prototypes and utilities for the [Eris](https://npmjs.com/package/eris) Discord API Library
 
+# WARNING
+This package has been archived. I will no longer be providing support for pluris. If you want to hack/port this for other features, feel free to do so, but please don't be disappointed if I don't give you support.
+
 ---
 Installation and Usage
 ----------------------
